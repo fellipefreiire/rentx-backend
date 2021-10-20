@@ -1,7 +1,7 @@
 import { Category } from '../model/Category';
 import { ICategoriesRepository, ICreateCategoryDTO } from './ICategoriesRepository';
 
-class CategoryRepository implements ICategoriesRepository {
+class CategoriesRepository implements ICategoriesRepository {
   private categories: Category[];
 
   constructor() {
@@ -30,4 +30,4 @@ class CategoryRepository implements ICategoriesRepository {
   }
 }
 
-export { CategoryRepository }
+export { CategoriesRepository }
