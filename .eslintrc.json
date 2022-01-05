@@ -4,13 +4,19 @@
     "node": true,
     "jest": true
   },
-  "extends": ["airbnb-base", "plugin:@typescript-eslint/recommended"],
+  "extends": [
+    "airbnb-base",
+    "plugin:@typescript-eslint/recommended"
+  ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": ["@typescript-eslint", "eslint-plugin-import-helpers"],
+  "plugins": [
+    "@typescript-eslint",
+    "eslint-plugin-import-helpers"
+  ],
   "rules": {
     "camelcase": "off",
     "import/no-unresolved": "error",
@@ -18,7 +24,9 @@
       "error",
       {
         "selector": "interface",
-        "format": ["PascalCase"],
+        "format": [
+          "PascalCase"
+        ],
         "custom": {
           "regex": "^I[A-Z]",
           "match": true
@@ -43,13 +51,28 @@
       "warn",
       {
         "newlinesBetween": "always",
-        "groups": ["module", "/^@shared/", ["parent", "sibling", "index"]],
-        "alphabetize": { "order": "asc", "ignoreCase": true }
+        "groups": [
+          "module",
+          "/^@/",
+          [
+            "parent",
+            "sibling",
+            "index"
+          ]
+        ],
+        "alphabetize": {
+          "order": "asc",
+          "ignoreCase": true
+        }
       }
     ],
     "import/no-extraneous-dependencies": [
       "error",
-      { "devDependencies": ["**/*.spec.js"] }
+      {
+        "devDependencies": [
+          "**/*.spec.js"
+        ]
+      }
     ]
   },
   "settings": {
