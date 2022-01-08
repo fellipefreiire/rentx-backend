@@ -25,7 +25,7 @@
 [] Deve ser possível cadastrar uma especificação para um carro.
 
 **RN**
-[] Não deve ser possível cadastrar uma especificação para um carro não cadastrado.
+[X] Não deve ser possível cadastrar uma especificação para um carro não cadastrado.
 [] Não deve ser possível cadastrar uma especificação já existente para o mesmo carro.
 [] O usuário responsável pelo cadastro deve ser um usuário administrador.
 
