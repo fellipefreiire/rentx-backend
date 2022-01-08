@@ -9,11 +9,13 @@ export class CreateSpecificationsCars1641614325134 implements MigrationInterface
                 columns: [
                     {
                         name: "car_id",
-                        type: "uuid"
+                        type: "uuid",
+                        isPrimary: true
                     },
                     {
                         name: "specification_id",
-                        type: "uuid"
+                        type: "uuid",
+                        isPrimary: true
                     },
                     {
                         name: "created_at",
