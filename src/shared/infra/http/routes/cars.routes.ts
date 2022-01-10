@@ -41,7 +41,7 @@ carsRoutes.post(
 )
 
 carsRoutes.post(
-  '/images:id',
+  '/images/:id',
   ensureAunthenticated,
   ensureAdmin,
   upload.array("images"),
