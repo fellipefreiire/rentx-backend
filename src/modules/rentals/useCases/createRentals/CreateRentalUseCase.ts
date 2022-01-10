@@ -1,5 +1,6 @@
 import { AppError } from './../../../../shared/errors/AppError';
 import { IRentalRepository } from "@modules/rentals/repositories/IRentalRepository";
+import { Rental } from '@modules/rentals/infra/typeorm/entities/Rental';
 
 interface IRequest {
   user_id: string;
@@ -17,7 +18,7 @@ class CreateRentalUseCase {
     user_id,
     car_id,
     expected_return_date
-  }: IRequest): Promise<void> {
+  }: IRequest): Promise<Rental> {
     const carUnavailable = await this.rentalRepository.findOpenRentalByCar(car_id)
 
     if (carUnavailable) {
@@ -29,6 +30,12 @@ class CreateRentalUseCase {
     if (rentalOpenToUser) {
       throw new AppError("User already have a rental!")
     }
+
+    return await this.rentalRepository.create({
+      user_id,
+      car_id,
+      expected_return_date
+    })
   }
 }
 
