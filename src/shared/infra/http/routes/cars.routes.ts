@@ -1,7 +1,7 @@
 import uploadConfig from '@config/upload';
 import { Router } from 'express'
 
-import { ensureAunthenticated } from '@shared/infra/http/middlewares/ensureAunthenticated';
+import { ensureAuthenticated } from '@shared/infra/http/middlewares/ensureAuthenticated';
 import { ensureAdmin } from '../middlewares/ensureAdmin';
 
 import { CreateCarController } from '@modules/cars/useCases/createCar/CreateCarController'
@@ -23,7 +23,7 @@ const upload = multer(uploadConfig.upload('./tmp/cars'))
 
 carsRoutes.post(
   '/',
-  ensureAunthenticated,
+  ensureAuthenticated,
   ensureAdmin,
   createCarController.handle
 )
@@ -35,14 +35,14 @@ carsRoutes.get(
 
 carsRoutes.post(
   '/specifications/:id',
-  ensureAunthenticated,
+  ensureAuthenticated,
   ensureAdmin,
   createCarSpecificationController.handle
 )
 
 carsRoutes.post(
   '/images/:id',
-  ensureAunthenticated,
+  ensureAuthenticated,
   ensureAdmin,
   upload.array("images"),
   uploadCarImageController.handle

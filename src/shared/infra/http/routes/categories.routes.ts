@@ -1,4 +1,4 @@
-import { ensureAunthenticated } from '@shared/infra/http/middlewares/ensureAunthenticated';
+import { ensureAuthenticated } from '@shared/infra/http/middlewares/ensureAuthenticated';
 import { Router } from 'express'
 import multer from 'multer'
 
@@ -17,10 +17,10 @@ const createCategoryController = new CreateCategoryController()
 const importCategoryController = new ImportCategoryController()
 const listCategoriesController = new ListCategoriesController()
 
-categoriesRoutes.post('/', ensureAunthenticated, ensureAdmin, createCategoryController.handle)
+categoriesRoutes.post('/', ensureAuthenticated, ensureAdmin, createCategoryController.handle)
 
 categoriesRoutes.get('/', listCategoriesController.handle)
 
-categoriesRoutes.post('/import', ensureAunthenticated, ensureAdmin, upload.single('file'), importCategoryController.handle)
+categoriesRoutes.post('/import', ensureAuthenticated, ensureAdmin, upload.single('file'), importCategoryController.handle)
 
 export { categoriesRoutes }
