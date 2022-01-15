@@ -1,45 +1,48 @@
-import { Repository } from 'typeorm';
-import { getRepository } from 'typeorm';
-import { UserTokens } from './../entities/UserTokens';
-import { ICreateUserTokenDTO } from '@modules/accounts/dto/ICreateUserTokenDTO';
-import { IUsersTokensRepository } from './../../../repositories/IUsersTokensRepository';
+import { getRepository, Repository } from "typeorm";
 
+import { IUsersTokensRepository } from "@modules/accounts/repositories/IUsersTokensRepository";
+
+import { UserTokens } from "../entities/UserTokens";
+import { ICreateUserTokenDTO } from "@modules/accounts/dto/ICreateUserTokenDTO";
 
 export class UsersTokensRepository implements IUsersTokensRepository {
-  private repository: Repository<UserTokens>
+  private repository: Repository<UserTokens>;
 
   constructor() {
-    this.repository = getRepository(UserTokens)
+    this.repository = getRepository(UserTokens);
   }
 
   async create({
-    user_id,
     expires_date,
-    refresh_token
+    refresh_token,
+    user_id,
   }: ICreateUserTokenDTO): Promise<UserTokens> {
     const userToken = this.repository.create({
-      user_id,
       expires_date,
-      refresh_token
-    })
+      refresh_token,
+      user_id,
+    });
 
-    await this.repository.save(userToken)
+    await this.repository.save(userToken);
 
-    return userToken
+    return userToken;
   }
 
   async findByUserIdAndRefreshToken(
     user_id: string,
     refresh_token: string
   ): Promise<UserTokens> {
-    return await this.repository.findOne({ user_id, refresh_token })
+    return await this.repository.findOne({
+      user_id,
+      refresh_token,
+    });
   }
 
-  async deleteById(refresh_token_id: string): Promise<void> {
-    await this.repository.delete(refresh_token_id)
+  async deleteById(id: string): Promise<void> {
+    await this.repository.delete(id);
   }
 
   async findByRefreshToken(refresh_token: string): Promise<UserTokens> {
-    return await this.repository.findOne({ refresh_token })
+    return await this.repository.findOne({ refresh_token });
   }
 }

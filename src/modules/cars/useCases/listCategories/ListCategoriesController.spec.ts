@@ -28,7 +28,7 @@ describe('List Category Controller', () => {
   })
 
   it('should be able to list all categories', async () => {
-    const { body: { token } } = await request(app).post('/sessions').send({
+    const { body: { refresh_token } } = await request(app).post('/sessions').send({
       email: "admin@rentx.com.br",
       password: "admin"
     })
@@ -37,7 +37,7 @@ describe('List Category Controller', () => {
       name: "Category supertest name",
       description: "Category supertest description"
     }).set({
-      Authorization: `Bearer ${token}`
+      Authorization: `Bearer ${refresh_token}`
     })
 
     const response = await request(app).get('/categories')
