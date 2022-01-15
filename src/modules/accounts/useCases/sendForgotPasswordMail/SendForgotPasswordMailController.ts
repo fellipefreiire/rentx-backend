@@ -5,7 +5,7 @@ import { SendForgotPasswordMailUseCase } from "./SendForgotPasswordMailUseCase";
 
 export class SendForgotPasswordMailController {
 
-  async execute(req: Request, res: Response): Promise<Response> {
+  async handle(req: Request, res: Response): Promise<Response> {
     const { email } = req.body
 
     const sendForgotPasswordMailUseCase = container.resolve(
