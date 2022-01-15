@@ -1,3 +1,5 @@
+import { LocalStorageProvider } from './StorageProvider/implementations/LocalStorageProvider';
+import { IStorageProvider } from './StorageProvider/IStorageProvider';
 import { DayjsDateProvider } from '@shared/container/providers/DateProvider/implementations/DayjsDateProvider';
 import { container } from 'tsyringe'
 import { IDateProvider } from './DateProvider/IDateProvider'
@@ -13,4 +15,9 @@ container.registerSingleton<IDateProvider>(
 container.registerInstance<IMailProvider>(
   "EtherealMailProvider",
   new EtherealMailProvider()
+)
+
+container.registerSingleton<IStorageProvider>(
+  "StorageProvider",
+  LocalStorageProvider
 )
