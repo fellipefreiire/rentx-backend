@@ -28,7 +28,7 @@ describe('Create Category Controller', () => {
   })
 
   it('should be able to create a new category', async () => {
-    const { body: { refresh_token } } = await request(app).post('/sessions').send({
+    const { body: { token } } = await request(app).post('/sessions').send({
       email: "admin@rentx.com.br",
       password: "admin"
     })
@@ -37,7 +37,7 @@ describe('Create Category Controller', () => {
       name: "Category supertest name",
       description: "Category supertest description"
     }).set({
-      Authorization: `Bearer ${refresh_token}`
+      Authorization: `Bearer ${token}`
     })
 
     expect(response.status).toBe(201)

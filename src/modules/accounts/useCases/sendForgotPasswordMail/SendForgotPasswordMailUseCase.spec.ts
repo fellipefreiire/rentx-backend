@@ -17,6 +17,7 @@ describe("Send Forgot Password Mail", () => {
     usersRepositoryInMemory = new UsersRepositoryInMemory()
     usersTokensRepositoryInMemory = new UsersTokensRepositoryInMemory()
     dayjsDateProvider = new DayjsDateProvider()
+    mailProviderInMemory = new MailProviderInMemory();
     sendForgotPasswordMailUseCase = new SendForgotPasswordMailUseCase(
       usersRepositoryInMemory,
       usersTokensRepositoryInMemory,
