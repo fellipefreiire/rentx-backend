@@ -5,4 +5,4 @@ import { container } from "tsyringe";
 container.registerSingleton<IDateProvider>(
   "DayjsDateProvider",
   DayjsDateProvider
-)
+) 
